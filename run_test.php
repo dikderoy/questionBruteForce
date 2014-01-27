@@ -13,49 +13,6 @@ function load($classname)
 
 spl_autoload_register('load');
 
-/**
- * @param Condition[] $map
- * @param             $results
- *
- * @return string
- */
-function drawAnswerMap($map, $results)
-{
-	$line = "\n" . "answer map:\n";
-	for ($idx = 1; $idx < 21; $idx++) {
-		$line .= sprintf('|%2d', $idx);
-	}
-	$line .= "\n";
-	for ($idx = 1; $idx < 21; $idx++) {
-		$char = '_';
-		switch ($map[$idx]->getAnswer()) {
-			case Condition::A:
-				$char = 'A';
-				break;
-			case Condition::B:
-				$char = 'B';
-				break;
-			case Condition::C:
-				$char = 'C';
-				break;
-			case Condition::D:
-				$char = 'D';
-				break;
-			case Condition::E:
-				$char = 'E';
-				break;
-			default:
-				$char = '_';
-		}
-		$line .= "|$char ";
-	}
-	$line .= "\n";
-	for ($idx = 1; $idx < 21; $idx++) {
-		$line .= ($results[$idx] ? '|T ' : '|F ');
-	}
-	return $line;
-}
-
 $file = fopen('test_log.log', 'w');
 
 $runner               = new Runner();
@@ -69,7 +26,7 @@ try {
 	while ($runResult == false) {
 		$runResult = $runner->run();
 		$line      = sprintf("\nrun result %8d: %1d", $i, $runResult);
-		$line .= drawAnswerMap($runner->stack, $runner->result);
+		$line .= Helper::drawAnswerMap($runner->stack, $runner->result);
 
 		//print $line;
 		fwrite($file, $line);

@@ -30,6 +30,7 @@ class Cond12 extends Condition
 					return (fmod(sqrt($a), 1) === 0);
 				},
 			self::D => function ($a) { //является простым
+					var_dump($a);
 					$simpleRange = [1, 2, 3, 5, 7, 11, 13, 17, 19];
 					return in_array($a, $simpleRange);
 				},
@@ -47,11 +48,9 @@ class Cond12 extends Condition
 	public function check(array $cVector)
 	{
 		$count = 0;
-		for ($i = 10; $i > 0; $i--) {
-			if ($cVector[$i]->getAnswer() === self::B ||
-				$cVector[$i]->getAnswer() === self::C ||
-				$cVector[$i]->getAnswer() === self::D
-			)
+		for ($i = 1; $i < 21; $i++) {
+			$answer = $cVector[$i]->getAnswer();
+			if ($answer == self::B || $answer == self::C || $answer == self::D)
 				++$count;
 		}
 		/** @var callable $func */

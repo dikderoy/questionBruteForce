@@ -35,6 +35,11 @@ class Cond6 extends Condition
 	 */
 	public function check(array $cVector)
 	{
+		if ($this->getVal() === self::ALL) {
+			return false;
+		} elseif ($this->getVal() === self::NONE) {
+			return !in_array($cVector[17]->getAnswer(), [self::C, self::D, self::E]);
+		}
 		return ($cVector[17]->getAnswer() === $this->getVal());
 	}
 }
