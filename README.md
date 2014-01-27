@@ -21,4 +21,6 @@ using letters A to E as values of each division (also they represent selected an
 
 progam tryes to brute-force this 20-digit 5-based scale notation number.
 
-(but it is tooo much for PHP - there is a 4.9323811479746E-17 of possible combinations.
+(but it is tooo much for PHP - there is a 4.9323811479746E-17 of possible combinations).
+
+and the correct answer is DADBEDDEDABADBADBABE
